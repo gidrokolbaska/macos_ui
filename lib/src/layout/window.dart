@@ -121,8 +121,8 @@ class _MacosWindowState extends State<MacosWindow> {
     final sidebar = widget.sidebar;
     if (sidebar == null) {
       _sidebarWidth = 0.0;
-    } else if (sidebar.minWidth != old.sidebar!.minWidth ||
-        sidebar.maxWidth != old.sidebar!.maxWidth) {
+    } else if (sidebar.minWidth != old.sidebar?.minWidth ||
+        sidebar.maxWidth != old.sidebar?.maxWidth) {
       if (sidebar.minWidth > _sidebarWidth) {
         _sidebarWidth = sidebar.minWidth;
       }
@@ -138,8 +138,8 @@ class _MacosWindowState extends State<MacosWindow> {
     final endSidebar = widget.endSidebar;
     if (endSidebar == null) {
       _endSidebarWidth = 0.0;
-    } else if (endSidebar.minWidth != old.endSidebar!.minWidth ||
-        endSidebar.maxWidth != old.endSidebar!.maxWidth) {
+    } else if (endSidebar.minWidth != old.endSidebar?.minWidth ||
+        endSidebar.maxWidth != old.endSidebar?.maxWidth) {
       if (endSidebar.minWidth > _endSidebarWidth) {
         _endSidebarWidth = endSidebar.minWidth;
       }
