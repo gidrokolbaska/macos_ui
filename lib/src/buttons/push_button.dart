@@ -362,7 +362,7 @@ class PushButtonState extends State<PushButton>
                             ? _getClickEffectBoxDecoration()
                             : const BoxDecoration(),
                         child: Padding(
-                          padding: widget.controlSize.padding,
+                          padding: widget.padding ?? widget.controlSize.padding,
                           child: Align(
                             alignment: widget.alignment,
                             widthFactor: 1.0,
