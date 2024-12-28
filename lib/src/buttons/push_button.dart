@@ -11,10 +11,15 @@ const _kSmallButtonSize = Size(39.0, 14.0);
 const _kRegularButtonSize = Size(60.0, 18.0);
 const _kLargeButtonSize = Size(48.0, 26.0);
 
-const _kMiniButtonPadding = EdgeInsets.only(left: 6.0, right: 6.0, bottom: 1.0);
-const _kSmallButtonPadding = EdgeInsets.symmetric(
-  vertical: 1.0,
-  horizontal: 7.0,
+const _kMiniButtonPadding = EdgeInsets.only(
+  left: 6.0,
+  right: 6.0,
+  bottom: 1.0,
+);
+const _kSmallButtonPadding = EdgeInsets.only(
+  bottom: 2.0,
+  left: 7.0,
+  right: 7.0,
 );
 const _kRegularButtonPadding = EdgeInsets.only(
   left: 8.0,
@@ -25,7 +30,7 @@ const _kRegularButtonPadding = EdgeInsets.only(
 const _kLargeButtonPadding = EdgeInsets.only(
   right: 8.0,
   left: 8.0,
-  bottom: 1.0,
+  bottom: 3.0,
 );
 
 const _kMiniButtonRadius = BorderRadius.all(Radius.circular(2.0));
@@ -353,26 +358,18 @@ class PushButtonState extends State<PushButton>
                     final baseStyle =
                         theme.typography.body.copyWith(color: foregroundColor);
 
-                    return DecoratedBox(
+                    return Container(
+                      alignment: widget.alignment,
+                      padding: widget.padding ?? widget.controlSize.padding,
                       decoration: _getBoxDecoration().copyWith(
                         borderRadius: widget.controlSize.borderRadius,
                       ),
-                      child: Container(
-                        foregroundDecoration: buttonHeldDown
-                            ? _getClickEffectBoxDecoration()
-                            : const BoxDecoration(),
-                        child: Padding(
-                          padding: widget.padding ?? widget.controlSize.padding,
-                          child: Align(
-                            alignment: widget.alignment,
-                            widthFactor: 1.0,
-                            heightFactor: 1.0,
-                            child: DefaultTextStyle(
-                              style: widget.controlSize.textStyle(baseStyle),
-                              child: widget.child,
-                            ),
-                          ),
-                        ),
+                      foregroundDecoration: buttonHeldDown
+                          ? _getClickEffectBoxDecoration()
+                          : null,
+                      child: DefaultTextStyle(
+                        style: widget.controlSize.textStyle(baseStyle),
+                        child: widget.child,
                       ),
                     );
                   },
